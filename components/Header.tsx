@@ -13,6 +13,7 @@ const navLinks = [
   { label: "Software", href: "/software" },
   { label: "Certifications", href: "/certifications" },
   { label: "Academics", href: "/academics" },
+  { label: "Internships", href: "/internships" },
 ];
 
 export default function Header() {

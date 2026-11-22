@@ -63,6 +63,7 @@ export default function Footer() {
               { label: "Software", href: "/software" },
               { label: "Certifications", href: "/certifications" },
               { label: "Academics", href: "/academics" },
+              { label: "Internships", href: "/internships" },
               { label: "Contact", href: "/contact" },
             ].map((link) => (
               <li key={link.href}>
