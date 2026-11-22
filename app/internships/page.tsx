@@ -1,6 +1,8 @@
 "use client";
 // app/internships/page.tsx — Internships showcase page
 
+import Header from "@/components/Header";
+import Footer from "@/components/Footer";
 import { internships } from "@/data/internships";
 
 const typeColors: Record<string, { bg: string; color: string }> = {
@@ -11,7 +13,9 @@ const typeColors: Record<string, { bg: string; color: string }> = {
 
 export default function InternshipsPage() {
   return (
-    <main style={{ minHeight: "100vh", background: "var(--bg)", paddingBottom: 80 }}>
+    <>
+      <Header />
+      <main id="main-content" style={{ minHeight: "100vh", background: "var(--bg)", paddingBottom: 80 }}>
       {/* ── Hero ── */}
       <section
         style={{
@@ -374,5 +378,7 @@ export default function InternshipsPage() {
         </div>
       </section>
     </main>
+    <Footer />
+  </>
   );
 }
