@@ -26,7 +26,7 @@ export const internships: Internship[] = [
     endDate: "2025",
     location: "Chhatrapati Sambhajinagar, Maharashtra",
     type: "Full-Stack",
-    certificate: "/internships/jbb-certificate.pdf",
+    certificate: "/internships/jbb-certificate.png",
     description:
       "Developed a full-featured custom e-commerce website for a computer hardware shop supporting both Retail Customers and Wholesale Dealers. Built the complete Admin Dashboard and CMS, enabling non-technical staff to manage products, orders, customers, and website content without developer intervention.",
     techStack: [

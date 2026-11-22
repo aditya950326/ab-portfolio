@@ -1,8 +1,11 @@
 "use client";
 // app/internships/page.tsx — Internships showcase page
 
+import { useState } from "react";
+import Image from "next/image";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import Lightbox from "@/components/Lightbox";
 import { internships } from "@/data/internships";
 
 const typeColors: Record<string, { bg: string; color: string }> = {
@@ -12,6 +15,8 @@ const typeColors: Record<string, { bg: string; color: string }> = {
 };
 
 export default function InternshipsPage() {
+  const [lightboxSrc, setLightboxSrc] = useState<string | null>(null);
+  const [lightboxAlt, setLightboxAlt] = useState<string>("");
   return (
     <>
       <Header />
@@ -328,47 +333,80 @@ export default function InternshipsPage() {
                     </div>
                   </div>
 
-                  {/* Certificate — embedded viewer */}
+                  {/* Certificate — clean image view without PDF toolbars */}
                   {intern.certificate && (
                     <div style={{ marginTop: 28, paddingTop: 24, borderTop: "1px solid var(--border)" }}>
-                      <p
+                      <div
                         style={{
-                          fontSize: "0.78rem",
-                          fontWeight: 700,
-                          color: "var(--text-muted)",
-                          textTransform: "uppercase",
-                          letterSpacing: "0.1em",
+                          display: "flex",
+                          alignItems: "center",
+                          justifyContent: "space-between",
                           marginBottom: 12,
                         }}
                       >
-                        Internship Certificate
-                      </p>
-                      <iframe
-                        src={intern.certificate}
-                        title="Internship Certificate"
-                        style={{
-                          width: "100%",
-                          height: 520,
-                          border: "1px solid var(--border)",
-                          borderRadius: 12,
-                          background: "#f9fafb",
-                        }}
-                      />
-                      <div style={{ marginTop: 10, textAlign: "right" }}>
-                        <a
-                          href={intern.certificate}
-                          target="_blank"
-                          rel="noopener noreferrer"
+                        <p
                           style={{
-                            fontSize: "0.82rem",
-                            color: "var(--accent)",
-                            textDecoration: "none",
-                            fontWeight: 500,
+                            fontSize: "0.78rem",
+                            fontWeight: 700,
+                            color: "var(--text-muted)",
+                            textTransform: "uppercase",
+                            letterSpacing: "0.1em",
+                            margin: 0,
                           }}
                         >
-                          Open in full screen ↗
-                        </a>
+                          Internship Certificate
+                        </p>
+                        <span style={{ fontSize: "0.8rem", color: "var(--text-muted)" }}>
+                          Click to view full size
+                        </span>
                       </div>
+
+                      <button
+                        type="button"
+                        onClick={() => {
+                          if (intern.certificate) {
+                            setLightboxSrc(intern.certificate);
+                            setLightboxAlt(`${intern.company} Internship Certificate`);
+                          }
+                        }}
+                        style={{
+                          display: "block",
+                          width: "100%",
+                          padding: 0,
+                          background: "#fff",
+                          border: "1px solid var(--border)",
+                          borderRadius: 12,
+                          overflow: "hidden",
+                          cursor: "zoom-in",
+                          boxShadow: "0 2px 8px rgba(0,0,0,0.04)",
+                          transition: "transform 0.2s ease, box-shadow 0.2s ease",
+                          textAlign: "center",
+                        }}
+                        onMouseEnter={(e) => {
+                          e.currentTarget.style.transform = "translateY(-2px)";
+                          e.currentTarget.style.boxShadow = "0 6px 20px rgba(0,0,0,0.08)";
+                        }}
+                        onMouseLeave={(e) => {
+                          e.currentTarget.style.transform = "translateY(0)";
+                          e.currentTarget.style.boxShadow = "0 2px 8px rgba(0,0,0,0.04)";
+                        }}
+                      >
+                        <Image
+                          src={intern.certificate}
+                          alt={`${intern.company} Internship Certificate`}
+                          width={800}
+                          height={1035}
+                          style={{
+                            width: "100%",
+                            maxWidth: 700,
+                            height: "auto",
+                            display: "block",
+                            margin: "0 auto",
+                          }}
+                          priority
+                          unoptimized
+                        />
+                      </button>
                     </div>
                   )}
                 </div>
@@ -379,6 +417,15 @@ export default function InternshipsPage() {
       </section>
     </main>
     <Footer />
+
+    {/* Lightbox Modal */}
+    {lightboxSrc && (
+      <Lightbox
+        src={lightboxSrc}
+        alt={lightboxAlt}
+        onClose={() => setLightboxSrc(null)}
+      />
+    )}
   </>
   );
 }
