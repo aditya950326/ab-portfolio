@@ -19,7 +19,7 @@ export interface Internship {
 export const internships: Internship[] = [
   {
     id: "jbb-ecommerce",
-    company: "JBB Computer",
+    company: "JBB Technologies",
     role: "Frontend & Admin Panel Developer (Intern)",
     duration: "Internship",
     startDate: "2025",

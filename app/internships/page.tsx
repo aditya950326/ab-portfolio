@@ -324,31 +324,47 @@ export default function InternshipsPage() {
                     </div>
                   </div>
 
-                  {/* Certificate link */}
+                  {/* Certificate — embedded viewer */}
                   {intern.certificate && (
                     <div style={{ marginTop: 28, paddingTop: 24, borderTop: "1px solid var(--border)" }}>
-                      <a
-                        href={intern.certificate}
-                        target="_blank"
-                        rel="noopener noreferrer"
+                      <p
                         style={{
-                          display: "inline-flex",
-                          alignItems: "center",
-                          gap: 8,
-                          background: "var(--accent)",
-                          color: "#fff",
-                          padding: "10px 22px",
-                          borderRadius: 10,
-                          fontSize: "0.88rem",
-                          fontWeight: 600,
-                          textDecoration: "none",
-                          transition: "opacity 0.15s",
+                          fontSize: "0.78rem",
+                          fontWeight: 700,
+                          color: "var(--text-muted)",
+                          textTransform: "uppercase",
+                          letterSpacing: "0.1em",
+                          marginBottom: 12,
                         }}
-                        onMouseEnter={(e) => ((e.currentTarget as HTMLElement).style.opacity = "0.85")}
-                        onMouseLeave={(e) => ((e.currentTarget as HTMLElement).style.opacity = "1")}
                       >
-                        📄 View Internship Certificate
-                      </a>
+                        Internship Certificate
+                      </p>
+                      <iframe
+                        src={intern.certificate}
+                        title="Internship Certificate"
+                        style={{
+                          width: "100%",
+                          height: 520,
+                          border: "1px solid var(--border)",
+                          borderRadius: 12,
+                          background: "#f9fafb",
+                        }}
+                      />
+                      <div style={{ marginTop: 10, textAlign: "right" }}>
+                        <a
+                          href={intern.certificate}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          style={{
+                            fontSize: "0.82rem",
+                            color: "var(--accent)",
+                            textDecoration: "none",
+                            fontWeight: 500,
+                          }}
+                        >
+                          Open in full screen ↗
+                        </a>
+                      </div>
                     </div>
                   )}
                 </div>
