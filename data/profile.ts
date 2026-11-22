@@ -7,7 +7,7 @@ export const profile = {
   name: "Aditya Rahul Birare",
   nameShort: "Aditya",
   tagline: "Electronics & Computer Engineer — building firmware that runs hardware and products that people love.",
-  bio: "I'm a third-year Electronics and Computer Engineering student at MIT, Chhatrapati Sambhajinagar. I live at the intersection of bare-metal firmware and full-stack software — writing C for STM32 microcontrollers by day and React with AI integrations by night. I'm looking for internships and collaborations where thoughtful engineering meets real-world impact.",
+  bio: "I'm a Electronics and Computer Engineering student at MIT, Chhatrapati Sambhajinagar. I live at the intersection of bare-metal firmware and full-stack software — writing C for STM32 microcontrollers by day and React with AI integrations by night. I'm looking for internships and collaborations where thoughtful engineering meets real-world impact.",
   photo: "/images/aditya-profile.jpg",
   email: "adityabirare01@gmail.com",
   phone: "+91 9503268593",
